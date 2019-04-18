@@ -1,16 +1,16 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import Navbar_Top from "./common/navbar";
-import BreakdownList from "./common/list";
+import Breakdowns from "./components/breakdowns";
 
 class App extends Component {
   render() {
     return (
-      <div className="container">
+      <Fragment>
         <Navbar_Top />
-        <BreakdownList />
-      </div>
+        <Breakdowns />
+      </Fragment>
     );
   }
 }

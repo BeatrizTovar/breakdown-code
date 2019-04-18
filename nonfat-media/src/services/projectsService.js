@@ -1,5 +1,3 @@
-// import * as projectsAPI from "./projectsService";
-
 const projects = [
   {
     added: 1485174060,
