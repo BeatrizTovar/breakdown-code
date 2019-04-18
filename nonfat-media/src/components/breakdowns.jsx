@@ -4,12 +4,12 @@ import BreakdownsTable from "./breakdownsTable";
 
 class Breakdowns extends Component {
   state = {
-    projects: []
+    breakdowns: []
   };
 
   componentDidMount() {
     this.setState({
-      projects: getProjects()
+      breakdowns: getProjects()
     });
   }
 
@@ -17,7 +17,7 @@ class Breakdowns extends Component {
     console.log(this.state.projects);
     return (
       <Fragment>
-        <BreakdownsTable />
+        <BreakdownsTable breakdowns={this.state.breakdowns} />
       </Fragment>
     );
   }

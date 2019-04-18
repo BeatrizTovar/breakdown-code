@@ -1,7 +1,9 @@
 import React, { Component, Fragment } from "react";
 import { Table } from "react-bootstrap";
 import CheckBox from "../common/checkbox";
+
 const breakdownsTable = props => {
+  const { breakdowns } = props;
   return (
     <Fragment>
       <Table striped bordered hover variant="dark">
@@ -16,30 +18,18 @@ const breakdownsTable = props => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1.1</td>
-            <td>2.1</td>
-            <td>3.1</td>
-            <td>4.1</td>
-            <td>5.1</td>
-            <CheckBox />
-          </tr>
-          <tr>
-            <td>1.2</td>
-            <td>2.2</td>
-            <td>3.2</td>
-            <td>4.2</td>
-            <td>5.2</td>
-            <CheckBox />
-          </tr>
-          <tr>
-            <td>1.3</td>
-            <td>2.3</td>
-            <td>3.3</td>
-            <td>4.3</td>
-            <td>5.3</td>
-            <CheckBox />
-          </tr>
+          {breakdowns.map(item => (
+            <tr key={`${item.title}_${item.added}`}>
+              <td>{item.added}</td>
+              <td>{item.title}</td>
+              <td>{item.type}</td>
+              <td>{item.castingDirector}</td>
+              <td>{item.startDate}</td>
+              <td>
+                <CheckBox />
+              </td>
+            </tr>
+          ))}
         </tbody>
       </Table>
     </Fragment>
