@@ -5,7 +5,7 @@ const Navbar_Top = () => {
   return (
     <Fragment>
       <Navbar bg="dark" variant="dark">
-        <Navbar.Brand>{"NonFat Media Code Challenge"}</Navbar.Brand>
+        <Navbar.Brand>{"NonFat Media"}</Navbar.Brand>
       </Navbar>
     </Fragment>
   );

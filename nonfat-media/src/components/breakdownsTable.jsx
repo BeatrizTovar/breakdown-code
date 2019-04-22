@@ -1,9 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Table } from "react-bootstrap";
-import CheckBox from "../common/checkbox";
 
 const breakdownsTable = props => {
-  debugger;
   const { breakdowns, handleCheckBox } = props;
   return (
     <Fragment>
@@ -19,7 +17,7 @@ const breakdownsTable = props => {
           </tr>
         </thead>
         <tbody>
-          {breakdowns.map(item => (
+          {breakdowns.map((item, index) => (
             <tr key={`${item.title}_${item.added}`}>
               <td>{item.added}</td>
               <td>{item.title}</td>
@@ -27,11 +25,11 @@ const breakdownsTable = props => {
               <td>{item.castingDirector}</td>
               <td>{item.startDate}</td>
               <td>
-                {/* <CheckBox /> */}
                 <input
                   type="checkbox"
-                  name="myTextEditBox"
+                  key={`${item.title}_${item.added}`}
                   value="checked"
+                  onClick={handleCheckBox(index)}
                 />{" "}
                 Yes
               </td>
