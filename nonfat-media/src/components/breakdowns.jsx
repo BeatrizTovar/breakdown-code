@@ -24,26 +24,14 @@ class Breakdowns extends Component {
   render() {
     console.log(this.state.breakdowns);
     let { breakdowns } = this.state;
-
-    let breakdownsList = breakdowns.map((item, index) => {
-      return (
-        <div key={`${item.added}_${item.title}`}>
-          <div>
-            <input
-              className="checkbox"
-              key={`${item.added}_${item.title}`}
-              type="checkbox"
-              onClick={e => this.handleCheckBox(e, index)}
-            />
-            <label>{item.title}</label>
-          </div>
-        </div>
-      );
-    });
     return (
       <Fragment>
-        {/* <BreakdownsTable breakdowns={this.state.breakdowns} /> */}
-        <div>{breakdownsList}</div>
+        <div className="row-10">
+          <BreakdownsTable
+            breakdowns={breakdowns}
+            handleCheckBox={this.handleCheckBox}
+          />
+        </div>
       </Fragment>
     );
   }

@@ -3,7 +3,8 @@ import { Table } from "react-bootstrap";
 import CheckBox from "../common/checkbox";
 
 const breakdownsTable = props => {
-  const { breakdowns } = props;
+  debugger;
+  const { breakdowns, handleCheckBox } = props;
   return (
     <Fragment>
       <Table striped bordered hover variant="dark">
@@ -26,7 +27,13 @@ const breakdownsTable = props => {
               <td>{item.castingDirector}</td>
               <td>{item.startDate}</td>
               <td>
-                <CheckBox />
+                {/* <CheckBox /> */}
+                <input
+                  type="checkbox"
+                  name="myTextEditBox"
+                  value="checked"
+                />{" "}
+                Yes
               </td>
             </tr>
           ))}
