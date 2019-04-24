@@ -1,14 +1,14 @@
-import React, { Component, Fragment } from "react";
+import React, { Fragment } from "react";
 import { Table } from "react-bootstrap";
 
 const breakdownsTable = props => {
-  const { breakdowns, handleCheckBox } = props;
+  const { breakdowns, onCheck, onSort } = props;
   return (
     <Fragment>
-      <Table striped bordered hover variant="dark">
+      <Table striped bordered hover variant="light">
         <thead>
           <tr>
-            <th>Added</th>
+            <th onClick={() => onSort("added")}>Added</th>
             <th>Title</th>
             <th>Type</th>
             <th>Casting Director</th>
@@ -29,7 +29,7 @@ const breakdownsTable = props => {
                   type="checkbox"
                   key={`${item.title}_${item.added}`}
                   value="checked"
-                  onClick={handleCheckBox(index)}
+                  onClick={() => onCheck(index)}
                 />{" "}
                 Yes
               </td>

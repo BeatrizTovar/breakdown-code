@@ -1,10 +1,12 @@
 import React, { Component, Fragment } from "react";
 import { getProjects } from "../services/projectsService";
 import BreakdownsTable from "./breakdownsTable";
+import _ from "lodash";
 
 class Breakdowns extends Component {
   state = {
-    breakdowns: []
+    breakdowns: [],
+    sortColumn: { column: "added", order: "desc" }
   };
 
   componentDidMount() {
@@ -13,28 +15,43 @@ class Breakdowns extends Component {
     });
   }
 
-  handleCheckBox = breakdown => {
-    const breakdown = [...this.state.breakdowns];
-    const index = breakdowns.indexOf(breakdown);
-    breakdowns[index] = { ...breakdowns[index] };
-    breakdowns[index].isChecked = !breakdowns[index].isChecked;
-    this.setState({ breakdowns });
-    // let obj = JSON.parse(JSON.stringify(this.state.breakdowns));
-    // obj[index].isChecked = !obj[index].isChecked;
-    // this.setState({ breakdowns: obj });
-    // console.log(obj[index]);
+  handleCheckBox = index => {
+    const { breakdowns } = this.state;
+    let obj = JSON.parse(JSON.stringify(breakdowns));
+    obj[index].isChecked = !obj[index].isChecked;
+    this.setState({ breakdowns: obj });
+  };
+
+  handleSort = column => {
+    const sortColumn = { ...this.state.sortColumn };
+    if (sortColumn.column === column)
+      sortColumn.order = sortColumn.order === "asc" ? "desc" : "asc";
+    else {
+      sortColumn.column = column;
+      sortColumn.order = "asc";
+    }
+    this.setState({ sortColumn });
   };
 
   render() {
-    console.log(this.state.breakdowns);
-    let { breakdowns } = this.state;
+    // console.log(this.state.breakdowns);
+    let { breakdowns, sortColumn } = this.state;
+    const sorted = _.orderBy(
+      breakdowns,
+      [sortColumn.column],
+      [sortColumn.order]
+    );
+
     return (
       <Fragment>
         <div className="row-9">
           <BreakdownsTable
-            breakdowns={breakdowns}
-            handleCheckBox={this.handleCheckBox}
+            breakdowns={sorted}
+            onCheck={this.handleCheckBox}
+            onSort={this.handleSort}
           />
+
+          {/* {sorted} */}
         </div>
       </Fragment>
     );
