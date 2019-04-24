@@ -34,7 +34,6 @@ class Breakdowns extends Component {
   };
 
   render() {
-    // console.log(this.state.breakdowns);
     let { breakdowns, sortColumn } = this.state;
     const sorted = _.orderBy(
       breakdowns,
@@ -50,8 +49,6 @@ class Breakdowns extends Component {
             onCheck={this.handleCheckBox}
             onSort={this.handleSort}
           />
-
-          {/* {sorted} */}
         </div>
       </Fragment>
     );

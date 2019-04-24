@@ -4,7 +4,7 @@ import { Navbar } from "react-bootstrap";
 const Navbar_Top = () => {
   return (
     <Fragment>
-      <Navbar bg="dark" variant="dark">
+      <Navbar bg="light" variant="light">
         <Navbar.Brand>{"NonFat Media"}</Navbar.Brand>
       </Navbar>
     </Fragment>
